@@ -1,9 +1,9 @@
 # ⭐ Store Rating Platform
 
-A modern full-stack web application where users can browse stores, give ratings, and manage their profile.  
+A modern full-stack web application where users can browse stores, give ratings, and manage their profiles.  
 Admins can manage users & stores, while store owners can view analytics of their assigned stores.
 
-This project is built with a clean, minimal, and premium UI to provide an intuitive experience across all roles.
+This project features a **clean, minimal, premium UI** and a well-structured backend powered by Supabase.
 
 ---
 
@@ -12,7 +12,7 @@ This project is built with a clean, minimal, and premium UI to provide an intuit
 ### **Frontend**
 - React + Vite  
 - React Router  
-- Modern CSS (minimal + premium look)  
+- Modern CSS (premium UI)  
 - Fetch API  
 
 ### **Backend**
@@ -20,7 +20,7 @@ This project is built with a clean, minimal, and premium UI to provide an intuit
 - PostgreSQL (Supabase)  
 - JWT Authentication  
 - Bcrypt Password Hashing  
-- Role-based Access  
+- Role-based Authorization  
 
 ### **Tools**
 - Supabase Dashboard  
@@ -40,30 +40,54 @@ store-rating-app/
  │    ├── Admin panel.png
  │    ├── User.png
  │    ├── Owner.png
+ │    ├── Schema visualizer.png
+ │    ├── Tables .png
  │    ├── Store Rating Platform Diagrams.png
  ├── README.md
 
 ---
 
-# 📸 Screenshots
+# 📸 Screenshots (UI Preview)
 
 ### 🔐 **Sign In**
 ![Sign In](./Images/Sign%20in.png)
 
+---
+
 ### 🆕 **Create Account**
 ![Create Account](./Images/Create%20Account.png)
+
+---
 
 ### 👑 **Admin Dashboard**
 ![Admin Panel](./Images/Admin%20panel.png)
 
+---
+
 ### 🙋‍♂️ **User Dashboard**
 ![User Dashboard](./Images/User.png)
+
+---
 
 ### 🏪 **Store Owner Dashboard**
 ![Owner Dashboard](./Images/Owner.png)
 
-### 🧩 **System Architecture + Flow Diagram**
+---
+
+# 🧩 System Architecture + Flow Diagram
 ![System Architecture](./Images/Store%20Rating%20Platform%20Diagrams.png)
+
+---
+
+# 🗄 Database – Supabase Views
+
+## 📌 **1. Database Schema Visualizer (Relation Map)**
+![Schema Visualizer](./Images/Schema%20visualizer.png)
+
+---
+
+## 📌 **2. Supabase Tables View**
+![Tables](./Images/Tables%20.png)
 
 ---
 
@@ -73,35 +97,39 @@ store-rating-app/
 - Create users (Admin, Owner, User)  
 - Create stores + assign owners  
 - View total users, stores, ratings  
-- Search + filter + sort users  
-- Search + sort stores  
+- Search / filter / sort users  
+- Search / sort stores  
 - Validation error popups  
+
+---
 
 ### 🙋‍♂️ **User**
 - Browse stores  
-- Search + filter  
+- Search / filter  
 - Rate stores (1–5 stars)  
 - Update rating anytime  
 - Update password  
 
+---
+
 ### 🏪 **Store Owner**
-- View store assigned to them  
+- View assigned store  
 - See average rating  
-- View ratings + users who rated  
+- View rating details (users + ratings)  
 - Update password  
 
 ---
 
-# 🗄 Database Schema
+# 🗄 Database Schema (Text-Based ERD)
 
 ### **Users**
 | Field | Type | Notes |
 |-------|------|-------|
-| id | int | PK |
+| id | int | Primary Key |
 | name | varchar | 20–60 chars |
-| email | varchar | unique |
-| address | varchar | max 400 chars |
-| password_hash | varchar | bcrypt hash |
+| email | varchar | Unique |
+| address | varchar | ≤ 400 chars |
+| password_hash | varchar | Bcrypt |
 | role | USER / ADMIN / OWNER |
 | created_at | timestamp |
 
@@ -121,7 +149,7 @@ store-rating-app/
 | id | int |
 | user_id | FK |
 | store_id | FK |
-| rating | int (1–5) |
+| rating | 1–5 |
 | created_at | timestamp |
 | updated_at | timestamp |
 
@@ -131,77 +159,69 @@ store-rating-app/
 
 ### User Creation
 - **Name:** 20–60 characters  
-- **Address:** max 400 characters  
-- **Password:** 8–16 chars, 1 uppercase, 1 special char  
+- **Address:** ≤ 400 characters  
+- **Password:** 8–16 characters, 1 uppercase, 1 special character  
 - **Email:** valid format  
 
 ### Store Creation
-- **Name:** 20–60 characters  
-- **Email:** valid  
+- **Store name:** 20–60 characters  
+- **Store email:** valid  
 - **Owner ID:** must exist (optional)  
 
 If invalid →  
-🟥 “Please enter valid data.”
+🟥 **“Please enter valid data.”**
 
 ---
 
 # 🛠 Setup Instructions
 
----
+## 🔧 Backend Setup
 
-# 🔧 Backend Setup
-
-cd backend  
+```
+cd backend
 cp .env.example .env
-
-### Edit `.env` with:
-- `DATABASE_URL`  
-- `JWT_SECRET`  
-- `ADMIN_EMAIL`  
-- `ADMIN_PASSWORD_HASH`  
-
-### Install packages:
 npm install
-
-### Run migrations:
 npm run migrate
-
-### Start backend:
 npm run dev
+```
 
-Backend runs at: **http://localhost:4000**
+Backend runs at → **http://localhost:4000**
 
 ---
 
-# 💻 Frontend Setup
+## 💻 Frontend Setup
 
-cd frontend  
-cp .env.example .env  
-npm install  
+```
+cd frontend
+cp .env.example .env
+npm install
 npm run dev
+```
 
-Frontend runs at: **http://localhost:5173**
+Frontend runs at → **http://localhost:5173**
 
 ---
 
 # 🔐 Default Admin Login
 
-Email: jm.jaymehta2222@gmail.com  
+```
+Email: jm.jaymehta2222@gmail.com
 Password: Jay@1101
+```
 
 ---
 
 # 🏁 Conclusion
 
-The Store Rating Platform demonstrates:
+This project demonstrates:
 
 - Clean UI/UX  
-- Solid backend architecture  
-- Role-based permissions  
+- Role-based authentication  
 - Database design  
 - Supabase integration  
-- Real-world form validations  
-- A complete full-stack solution  
+- Admin + User + Store Owner flows  
+- Real-world validation rules  
+- A solid full-stack structure  
 
 If you like this project, ⭐ star the repo!  
 Feedback and contributions are welcome 😊
